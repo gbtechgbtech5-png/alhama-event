@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض الهامة لتجهيزات عيد الأضحى</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+            direction: rtl;
+        }
+
+        .page-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: url('https://i.postimg.cc/hPQhsNZk/Gemini-Generated-Image-pzhd60pzhd60pzhd.jpg') center center / cover no-repeat;
+        }
+
+        .page-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(
+                180deg,
+                rgba(10, 10, 10, 0.3) 0%,
+                rgba(10, 10, 10, 0.5) 30%,
+                rgba(10, 10, 10, 0.7) 60%,
+                rgba(10, 10, 10, 0.85) 100%
+            );
+        }
+
+        .hero-section {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .hero-banner-wrapper {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-banner-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .hero-banner-gradient {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: linear-gradient(to top, rgba(10,10,10,0.95), transparent);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px 20px 60px;
+            max-width: 900px;
+            margin: -80px auto 0;
+        }
+
+        .hero-title {
+            font-size: clamp(28px, 5vw, 52px);
+            font-weight: 900;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff, #f0d878, #c8a24e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(15px, 2.5vw, 20px);
+            font-weight: 400;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 36px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #25d366, #128c44);
+            color: #fff;
+            padding: 18px 48px;
+            border-radius: 60px;
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(37, 211, 102, 0.3);
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 48px rgba(37, 211, 102, 0.5);
+        }
+
+        .hero-cta svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+        }
+
+        .details-section {
+            position: relative;
+            z-index: 2;
+            padding: 80px 20px;
+        }
+
+        .section-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(24px, 4vw, 40px);
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #f0d878, #c8a24e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #c8a24e, transparent);
+            margin: 0 auto 50px;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .detail-card {
+            background: linear-gradient(145deg, rgba(200,162,78,0.08), rgba(200,162,78,0.02));
+            border: 1px solid rgba(200, 162, 78, 0.15);
+            border-radius: 20px;
+            padding: 36px 24px;
+            text-align: center;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .detail-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(200, 162, 78, 0.4);
+            box-shadow: 0 16px 48px rgba(200, 162, 78, 0.1);
+        }
+
+        .detail-icon {
+            font-size: 42px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .detail-label {
+            font-size: 14px;
+            color: #c8a24e;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .detail-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.5;
+        }
+
+        .why-section {
+            position: relative;
+            z-index: 2;
+            padding: 80px 20px;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .why-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 24px;
+            padding: 40px 28px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg, #c8a24e, #e8c84e);
+            transition: height 0.4s ease;
+            border-radius: 0 0 0 4px;
+        }
+
+        .why-card:hover::before {
+            height: 100%;
+        }
+
+        .why-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(200, 162, 78, 0.2);
+            background: linear-gradient(145deg, rgba(200,162,78,0.06), rgba(200,162,78,0.02));
+        }
+
+        .why-icon {
+            font-size: 36px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .why-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #f0d878;
+            margin-bottom: 12px;
+        }
+
+        .why-text {
+            font-size: 15px;
+            color: #aaa;
+            line-height: 1.8;
+        }
+
+        .cta-section {
+            position: relative;
+            z-index: 2;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta-box {
+            max-width: 700px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, rgba(200,162,78,0.1), rgba(200,162,78,0.03));
+            border: 1px solid rgba(200, 162, 78, 0.2);
+            border-radius: 32px;
+            padding: 60px 40px;
+            backdrop-filter: blur(20px);
+        }
+
+        .cta-urgency {
+            font-size: clamp(20px, 3.5vw, 32px);
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .cta-urgency span {
+            color: #e8c84e;
+        }
+
+        .cta-sub {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .cta-phone {
+            display: block;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #c8a24e;
+            font-weight: 600;
+        }
+
+        .cta-phone a {
+            color: #c8a24e;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .cta-phone a:hover {
+            color: #f0d878;
+        }
+
+        .footer {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 28px 20px;
+            background: rgba(0,0,0,0.6);
+            border-top: 1px solid rgba(200, 162, 78, 0.1);
+        }
+
+        .footer-text {
+            font-size: 13px;
+            color: #666;
+            cursor: default;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 28px;
+            left: 28px;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #25d366, #128c44);
+            color: #fff;
+            padding: 16px 28px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Tajawal', sans-serif;
+            box-shadow: 0 8px 32px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            animation: floatPulse 2s ease-in-out infinite;
+        }
+
+        .floating-whatsapp:hover {
+            animation: none;
+            transform: scale(1.08);
+            box-shadow: 0 12px 48px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes floatPulse {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .floating-whatsapp svg {
+            width: 24px;
+            height: 24px;
+            fill: #fff;
+            flex-shrink: 0;
+        }
+
+        .analytics-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 99999;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .analytics-overlay.active {
+            display: flex;
+        }
+
+        .analytics-panel {
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border: 1px solid rgba(200, 162, 78, 0.3);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 520px;
+            width: 90%;
+            direction: rtl;
+            position: relative;
+        }
+
+        .analytics-close {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .analytics-close:hover {
+            background: rgba(255,0,0,0.3);
+        }
+
+        .analytics-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: #e8c84e;
+            margin-bottom: 8px;
+        }
+
+        .analytics-subtitle {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 28px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            font-size: 15px;
+            color: #aaa;
+            font-weight: 500;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 800;
+            color: #25d366;
+        }
+
+        .stat-value.total {
+            font-size: 36px;
+            color: #e8c84e;
+        }
+
+        .analytics-reset {
+            margin-top: 24px;
+            background: rgba(255, 50, 50, 0.15);
+            border: 1px solid rgba(255, 50, 50, 0.3);
+            color: #ff6b6b;
+            padding: 10px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .analytics-reset:hover {
+            background: rgba(255, 50, 50, 0.25);
+        }
+
+        .log-list {
+            max-height: 160px;
+            overflow-y: auto;
+            margin-top: 16px;
+            padding: 12px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+        }
+
+        .log-list::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .log-list::-webkit-scrollbar-thumb {
+            background: rgba(200,162,78,0.3);
+            border-radius: 4px;
+        }
+
+        .log-item {
+            font-size: 12px;
+            color: #888;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .log-item:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                margin-top: -40px;
+                padding: 30px 16px 40px;
+            }
+
+            .hero-cta {
+                padding: 16px 36px;
+                font-size: 18px;
+            }
+
+            .details-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .detail-card {
+                padding: 24px 16px;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-box {
+                padding: 40px 24px;
+            }
+
+            .floating-whatsapp {
+                bottom: 20px;
+                left: 20px;
+                padding: 16px;
+                border-radius: 50%;
+            }
+
+            .floating-whatsapp span.float-text {
+                display: none;
+            }
+
+            .floating-whatsapp svg {
+                width: 28px;
+                height: 28px;
+            }
+
+            .analytics-panel {
+                padding: 28px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.7s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-background"></div>
+    <div class="page-overlay"></div>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero-section">
+        <div class="hero-banner-wrapper">
+            <img src="https://i.postimg.cc/xdvzRBCF/Gemini-Generated-Image-jwugz2jwugz2jwug.jpg" alt="معرض الهامة لتجهيزات عيد الأضحى" loading="eager">
+            <div class="hero-banner-gradient"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="hero-title">معرض الهامة لتجهيزات عيد الأضحى<br>مكانك محجوز بين الكبار!</h1>
+            <p class="hero-subtitle">
+                مو بس معرض.. تجربة تسويقية كاملة تعطي براندك القصة اللي يستاهلها. 
+                انضم لنخبة المشاريع الناجحة واضمن نجاح موسمك في أضخم تجمع للعلامات التجارية في إكسبو الذيد.
+            </p>
+            <a href="https://wa.me/971542888555?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%A8%D8%A7%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AD%D8%AC%D8%B2%20%D8%A8%D9%88%D8%AB%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%B1%D8%B6%20%D8%A7%D9%84%D9%87%D8%A7%D9%85%D8%A9" target="_blank" class="hero-cta wa-click-track" onclick="trackClick()">
+                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                احجز بوثك الحين
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== DETAILS ========== -->
+    <section class="details-section fade-up">
+        <div class="section-container">
+            <h2 class="section-title">تفاصيل المعرض</h2>
+            <div class="section-divider"></div>
+            <div class="details-grid">
+                <div class="detail-card">
+                    <span class="detail-icon">📅</span>
+                    <div class="detail-label">التاريخ</div>
+                    <div class="detail-value">30 أبريل<br>1 ، 2 ، 3 مايو</div>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-icon">🕒</span>
+                    <div class="detail-label">الوقت</div>
+                    <div class="detail-value">من 3 العصر<br>إلى 11 بالليل</div>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-icon">📍</span>
+                    <div class="detail-label">المكان</div>
+                    <div class="detail-value">إكسبو الذيد</div>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-icon">👑</span>
+                    <div class="detail-label">إدارة وتنظيم</div>
+                    <div class="detail-value">رائدة الأعمال نوال</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== WHY ========== -->
+    <section class="why-section fade-up">
+        <div class="section-container">
+            <h2 class="section-title">ليش تشارك في معرض الهامة؟</h2>
+            <div class="section-divider"></div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="why-icon">🌟</span>
+                    <h3 class="why-title">تغطية إعلامية ضخمة</h3>
+                    <p class="why-text">حملات تسويقية وتواجد لمؤثرين وبلوجرز معروفين يوصلون براندك لأكبر شريحة ممكنة من الجمهور.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-icon">🛍️</span>
+                    <h3 class="why-title">جمهور جاهز وقوته الشرائية عالية</h3>
+                    <p class="why-text">آلاف الزوار يدورون على التميز والرقي في تجهيزات عيد الأضحى. جمهورك موجود وينتظرك!</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-icon">📈</span>
+                    <h3 class="why-title">مبيعات مضمونة</h3>
+                    <p class="why-text">قرار واحد بس يضمن لك نجاح موسم كامل. المعرض فرصة ذهبية تحقق فيها أرقام ما توقعتها.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-icon">🏰</span>
+                    <h3 class="why-title">بيئة عرض فخمة وراقية</h3>
+                    <p class="why-text">تصميم المعرض يعكس الفخامة والأصالة الإماراتية، يرفع من قيمة منتجاتك ويعطي العميل تجربة ما ينساها.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="cta-section fade-up">
+        <div class="cta-box">
+            <h2 class="cta-urgency">الأعداد محدودة<br>و<span>البوثات تخلص بسرعة!</span></h2>
+            <p class="cta-sub">لا تفوّت فرصتك تكون بين أقوى البراندات في المعرض.<br>خذ قرارك الحين واحجز مكانك!</p>
+            <a href="https://wa.me/971542888555?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%A8%D8%A7%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AD%D8%AC%D8%B2%20%D8%A8%D9%88%D8%AB%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%B1%D8%B6%20%D8%A7%D9%84%D9%87%D8%A7%D9%85%D8%A9" target="_blank" class="hero-cta wa-click-track" onclick="trackClick()">
+                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                احجز بوثك الحين عبر الواتساب
+            </a>
+            <span class="cta-phone">للاستفسار والحجز المباشر: <a href="tel:+971542888555" dir="ltr">0542888555</a></span>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <p class="footer-text" id="secretTrigger">© 2025 معرض الهامة — جميع الحقوق محفوظة</p>
+    </footer>
+
+    <!-- ========== FLOATING WHATSAPP ========== -->
+    <a href="https://wa.me/971542888555?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%A8%D8%A7%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AD%D8%AC%D8%B2%20%D8%A8%D9%88%D8%AB%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%B1%D8%B6%20%D8%A7%D9%84%D9%87%D8%A7%D9%85%D8%A9" target="_blank" class="floating-whatsapp wa-click-track" onclick="trackClick()">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span class="float-text">💬 تواصل واتساب</span>
+    </a>
+
+    <!-- ========== HIDDEN ANALYTICS ========== -->
+    <div class="analytics-overlay" id="analyticsOverlay">
+        <div class="analytics-panel">
+            <button class="analytics-close" id="closeAnalytics">✕</button>
+            <h3 class="analytics-title">📊 لوحة تتبع الضغطات</h3>
+            <p class="analytics-subtitle">بيانات الضغط على أزرار الواتساب — مخفية عن الزوار</p>
+            <div class="stat-row">
+                <span class="stat-label">إجمالي الضغطات</span>
+                <span class="stat-value total" id="totalClicks">0</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">ضغطات اليوم</span>
+                <span class="stat-value" id="todayClicks">0</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">آخر ضغطة</span>
+                <span class="stat-label" id="lastClick" style="color:#e8c84e;">—</span>
+            </div>
+            <h4 style="color:#888; font-size:13px; margin-top:20px; margin-bottom:4px;">سجل الضغطات الأخيرة:</h4>
+            <div class="log-list" id="clickLog"></div>
+            <button class="analytics-reset" id="resetBtn">🗑️ مسح جميع البيانات</button>
+        </div>
+    </div>
+
+    <script>
+        function getClickData() {
+            const data = localStorage.getItem('wa_clicks');
+            return data ? JSON.parse(data) : { total: 0, clicks: [] };
+        }
+
+        function saveClickData(data) {
+            localStorage.setItem('wa_clicks', JSON.stringify(data));
+        }
+
+        function trackClick() {
+            const data = getClickData();
+            const now = new Date();
+            data.total += 1;
+            data.clicks.push({
+                timestamp: now.toISOString(),
+                date: now.toLocaleDateString('ar-AE'),
+                time: now.toLocaleTimeString('ar-AE'),
+                day: now.toLocaleDateString('ar-AE', { weekday: 'long' })
+            });
+            if (data.clicks.length > 100) data.clicks = data.clicks.slice(-100);
+            saveClickData(data);
+        }
+
+        function updateAnalyticsPanel() {
+            const data = getClickData();
+            const today = new Date().toLocaleDateString('ar-AE');
+            document.getElementById('totalClicks').textContent = data.total;
+            document.getElementById('todayClicks').textContent = data.clicks.filter(c => c.date === today).length;
+            if (data.clicks.length > 0) {
+                const last = data.clicks[data.clicks.length - 1];
+                document.getElementById('lastClick').textContent = last.time + ' — ' + last.day;
+            } else {
+                document.getElementById('lastClick').textContent = '—';
+            }
+            const logEl = document.getElementById('clickLog');
+            logEl.innerHTML = '';
+            const recent = data.clicks.slice(-20).reverse();
+            if (recent.length === 0) {
+                logEl.innerHTML = '<p style="color:#555;font-size:12px;text-align:center;padding:12px;">ما في ضغطات بعد</p>';
+            } else {
+                recent.forEach((c, i) => {
+                    const item = document.createElement('div');
+                    item.className = 'log-item';
+                    item.innerHTML = `<span>#${data.total - i}</span><span>${c.date} — ${c.time}</span>`;
+                    logEl.appendChild(item);
+                });
+            }
+        }
+
+        let secretClickCount = 0, secretTimer = null;
+        document.getElementById('secretTrigger').addEventListener('click', function() {
+            secretClickCount++;
+            clearTimeout(secretTimer);
+            secretTimer = setTimeout(() => { secretClickCount = 0; }, 2000);
+            if (secretClickCount >= 5) {
+                secretClickCount = 0;
+                updateAnalyticsPanel();
+                document.getElementById('analyticsOverlay').classList.add('active');
+            }
+        });
+
+        document.getElementById('closeAnalytics').addEventListener('click', function() {
+            document.getElementById('analyticsOverlay').classList.remove('active');
+        });
+
+        document.getElementById('analyticsOverlay').addEventListener('click', function(e) {
+            if (e.target === this) this.classList.remove('active');
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', function() {
+            if (confirm('متأكد تبا تمسح كل البيانات؟')) {
+                localStorage.removeItem('wa_clicks');
+                updateAnalyticsPanel();
+            }
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
